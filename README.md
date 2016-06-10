@@ -1,8 +1,6 @@
 # Diappnostic
 
-### Arquitectura de Software
-### Universidad de los Andes
-
+##### Arquitectura de Software. Universidad de los Andes
 
 
 # Experimento 1 - Desempeño
