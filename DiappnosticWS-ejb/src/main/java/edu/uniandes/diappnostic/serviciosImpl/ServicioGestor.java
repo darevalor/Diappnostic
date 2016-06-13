@@ -56,22 +56,13 @@ public class ServicioGestor implements IServicioGestor {
 	 * @return episodio del paciente
 	 */
 	@Override
-	public List<Episodio> consultarEpisodios(int identificacion) {
-		System.out.print("OK: " + identificacion);
+	public List<Episodio> consultarEpisodios(long identificacion) {
+		List<Episodio> lista = new ArrayList<Episodio>();		
+		Query query = em.createNamedQuery("Episodio.episodiosUsuario");
 		
-		List<Episodio> lista = new ArrayList<Episodio>();
-		
-		
-		
-		
-		
-//		Episodio ep1 = new Episodio(11, "2016/01/10", 5, "N", "muchos", "me duele", 
-//				2, 3, 4, identificacion, 2);
-//		Episodio ep2 = new Episodio(22, "2016/06/10", 5, "S", "poco", "mensaje voz", 
-//				66, 32, 409, identificacion, 5);
-		
-//		lista.add(ep1);
-//		lista.add(ep2);
+		query.setParameter("docUsuario", identificacion);
+		query.setParameter("codRol", 1);
+		lista = query.getResultList();		
 		
 		return lista;
 	}

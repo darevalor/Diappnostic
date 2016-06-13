@@ -12,7 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Episodio.findAll", query="SELECT e FROM Episodio e")
+@NamedQuery(name="Episodio.episodiosUsuario", query="SELECT e FROM Episodio e WHERE e.rolUsuario.id.numDocUsuario = :docUsuario AND e.rolUsuario.id.codRol = :codRol")
 public class Episodio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,8 @@ public class Episodio implements Serializable {
 	@Column(name="DESCRIPCION_VOZ")
 	private String descripcionVoz;
 
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
+	@Temporal( TemporalType.TIMESTAMP)
 	private Date fecha;
 
 	@Column(name="NIVEL_DOLOR")

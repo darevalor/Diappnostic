@@ -10,7 +10,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -59,7 +58,7 @@ public class DiappnosticRS {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("consultar/{id}")
-	public Response consultarEpisodio(@PathParam("id") int id) {		
+	public Response consultarEpisodio(@PathParam("id") long id) {		
 		List<Episodio> listaEpisodios = servicioGestor.consultarEpisodios(id);
 		
 		String response = new Gson().toJson(listaEpisodios);
