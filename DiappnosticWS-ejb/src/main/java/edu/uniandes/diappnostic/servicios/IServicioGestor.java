@@ -7,7 +7,10 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import edu.uniandes.diappnostic.dto.Episodio;
+import edu.uniandes.diappnostic.dto.EpisodioDto;
+import edu.uniandes.diappnostic.entities.Episodio;
+
+
 
 /**
  * @author 80221940
@@ -20,7 +23,7 @@ public interface IServicioGestor {
 	 * registra un episodio en el sistema
 	 * @param episodio informacion del episodio
 	 */
-	void registrarEpisodio(Episodio episodio);
+	void registrarEpisodio(EpisodioDto episodio);
 	
 	/**
 	 * Revisar los episodios de dolor del paciente 

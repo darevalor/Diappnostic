@@ -17,7 +17,8 @@ import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import edu.uniandes.diappnostic.dto.Episodio;
+import edu.uniandes.diappnostic.dto.EpisodioDto;
+import edu.uniandes.diappnostic.entities.Episodio;
 import edu.uniandes.diappnostic.servicios.IServicioGestor;
 
 @Path("/servicios")
@@ -46,11 +47,11 @@ public class DiappnosticRS {
 	@Path("registrar/")
 	public Response registrarEpisodio(String jsonRequest) {
 		Gson gsonBuilder = new GsonBuilder().create();
-		Episodio episodio = gsonBuilder.fromJson(jsonRequest, Episodio.class);
+		EpisodioDto episodio = gsonBuilder.fromJson(jsonRequest, EpisodioDto.class);
 		
 		servicioGestor.registrarEpisodio(episodio);
 		
-		return Response.status(200).entity(episodio.getConsecutivo()).build();
+		return Response.status(200).entity(episodio.getNumDocUsuario()).build();
 		
 	}
 	
@@ -59,12 +60,12 @@ public class DiappnosticRS {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("consultar/{id}")
 	public Response consultarEpisodio(@PathParam("id") int id) {		
-		List<Episodio> listaEpisodios = servicioGestor.consultarEpisodios(id);		
+		List<Episodio> listaEpisodios = servicioGestor.consultarEpisodios(id);
 		
-//		GenericEntity<List<Episodio>> entity = new GenericEntity<List<Episodio>>(List.newArrayList<listaEpisodios)) {};
-//	    Return Response.ok(entity).build();
+		String response = new Gson().toJson(listaEpisodios);
+		return Response.status(200).entity(response).build();
 		
-		return Response.status(200).entity(listaEpisodios).build();
+
 	}
 	
 	
