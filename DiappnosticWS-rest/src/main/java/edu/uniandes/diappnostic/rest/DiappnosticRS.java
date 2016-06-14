@@ -61,7 +61,17 @@ public class DiappnosticRS {
 	public Response consultarEpisodio(@PathParam("id") long id) {		
 		List<Episodio> listaEpisodios = servicioGestor.consultarEpisodios(id);
 		
-		String response = new Gson().toJson(listaEpisodios);
+		String response = "";
+		for(Episodio episodio : listaEpisodios) {
+			
+			Gson gson = new GsonBuilder()
+		               .registerTypeAdapter(Episodio.class, new MyTypeAdapter<Episodio>())
+		               .create();
+			
+			response = gson.toJson(episodio);
+		}
+		
+//		String response = new Gson().toJson(listaEpisodios); l
 		return Response.status(200).entity(response).build();
 		
 

@@ -62,7 +62,9 @@ public class ServicioGestor implements IServicioGestor {
 		
 		query.setParameter("docUsuario", identificacion);
 		query.setParameter("codRol", 1);
-		lista = query.getResultList();		
+		lista = query.getResultList();
+		
+		
 		
 		return lista;
 	}
