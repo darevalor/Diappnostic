@@ -23,19 +23,20 @@ public class EpisodioDto  implements Serializable {
 			
 	private String fecha;
 	
-	private int nivelDolor;
+	private long nivelDolor;
 	
 	private String presentaSomnolencia;
 	
-	private int acividadFisica;
+	private long acividadFisica;
 	
-	private int localizacionDolor;
+	private long localizacionDolor;
 		
-	private int medicamento;
+	private long medicamento;
 		
-	private int numDocUsuario;
+	private long numDocUsuario;
 	
-	private int codRolUsuario;
+	private long codRolUsuario;
+	
 	
 	
 
@@ -52,9 +53,10 @@ public class EpisodioDto  implements Serializable {
 	 * @param codRolUsuario
 	 */
 	public EpisodioDto(String alimentosConsumidos, String descripcionVoz,
-			String fecha, int nivelDolor, String presentaSomnolencia,
-			int acividadFisica, int localizacionDolor, int medicamento,
-			int numDocUsuario, int codRolUsuario) {
+			String fecha, long nivelDolor, String presentaSomnolencia,
+			long acividadFisica, long localizacionDolor, long medicamento,
+			long numDocUsuario, long codRolUsuario) {
+		super();
 		this.alimentosConsumidos = alimentosConsumidos;
 		this.descripcionVoz = descripcionVoz;
 		this.fecha = fecha;
@@ -112,14 +114,14 @@ public class EpisodioDto  implements Serializable {
 	/**
 	 * @return the nivelDolor
 	 */
-	public int getNivelDolor() {
+	public long getNivelDolor() {
 		return nivelDolor;
 	}
 
 	/**
 	 * @param nivelDolor the nivelDolor to set
 	 */
-	public void setNivelDolor(int nivelDolor) {
+	public void setNivelDolor(long nivelDolor) {
 		this.nivelDolor = nivelDolor;
 	}
 
@@ -140,74 +142,72 @@ public class EpisodioDto  implements Serializable {
 	/**
 	 * @return the acividadFisica
 	 */
-	public int getAcividadFisica() {
+	public long getAcividadFisica() {
 		return acividadFisica;
 	}
 
 	/**
 	 * @param acividadFisica the acividadFisica to set
 	 */
-	public void setAcividadFisica(int acividadFisica) {
+	public void setAcividadFisica(long acividadFisica) {
 		this.acividadFisica = acividadFisica;
 	}
 
 	/**
 	 * @return the localizacionDolor
 	 */
-	public int getLocalizacionDolor() {
+	public long getLocalizacionDolor() {
 		return localizacionDolor;
 	}
 
 	/**
 	 * @param localizacionDolor the localizacionDolor to set
 	 */
-	public void setLocalizacionDolor(int localizacionDolor) {
+	public void setLocalizacionDolor(long localizacionDolor) {
 		this.localizacionDolor = localizacionDolor;
 	}
 
 	/**
 	 * @return the medicamento
 	 */
-	public int getMedicamento() {
+	public long getMedicamento() {
 		return medicamento;
 	}
 
 	/**
 	 * @param medicamento the medicamento to set
 	 */
-	public void setMedicamento(int medicamento) {
+	public void setMedicamento(long medicamento) {
 		this.medicamento = medicamento;
 	}
 
 	/**
 	 * @return the numDocUsuario
 	 */
-	public int getNumDocUsuario() {
+	public long getNumDocUsuario() {
 		return numDocUsuario;
 	}
 
 	/**
 	 * @param numDocUsuario the numDocUsuario to set
 	 */
-	public void setNumDocUsuario(int numDocUsuario) {
+	public void setNumDocUsuario(long numDocUsuario) {
 		this.numDocUsuario = numDocUsuario;
 	}
 
 	/**
 	 * @return the codRolUsuario
 	 */
-	public int getCodRolUsuario() {
+	public long getCodRolUsuario() {
 		return codRolUsuario;
 	}
 
 	/**
 	 * @param codRolUsuario the codRolUsuario to set
 	 */
-	public void setCodRolUsuario(int codRolUsuario) {
+	public void setCodRolUsuario(long codRolUsuario) {
 		this.codRolUsuario = codRolUsuario;
 	}
 	
-	
-	
-	
+		
 }

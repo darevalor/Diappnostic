@@ -31,6 +31,6 @@ public interface IServicioGestor {
 	 * @param identificacion id del paciente
 	 * @return episodio del paciente
 	 */
-	List<Episodio> consultarEpisodios(long identificacion);
+	List<EpisodioDto> consultarEpisodios(long identificacion);
 
 }

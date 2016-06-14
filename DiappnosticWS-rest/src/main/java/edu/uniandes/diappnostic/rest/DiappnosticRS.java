@@ -38,7 +38,7 @@ public class DiappnosticRS {
 	}
 	
 	/**
-	 * 
+	 * Servicio que se encarga de registrar los epidodios de dolor
 	 * @param episodio
 	 */
 	@POST
@@ -54,27 +54,20 @@ public class DiappnosticRS {
 		
 	}
 	
-	
+	/**
+	 * Servicio que se encarga de realizar la consulta de episodios 
+	 * a partir de la identificacion del usuario
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("consultar/{id}")
 	public Response consultarEpisodio(@PathParam("id") long id) {		
-		List<Episodio> listaEpisodios = servicioGestor.consultarEpisodios(id);
-		
-		String response = "";
-		for(Episodio episodio : listaEpisodios) {
-			
-			Gson gson = new GsonBuilder()
-		               .registerTypeAdapter(Episodio.class, new MyTypeAdapter<Episodio>())
-		               .create();
-			
-			response = gson.toJson(episodio);
-		}
-		
-//		String response = new Gson().toJson(listaEpisodios); l
-		return Response.status(200).entity(response).build();
-		
-
+		List<EpisodioDto> listaEpisodios = servicioGestor.consultarEpisodios(id);
+						
+		String response = new Gson().toJson(listaEpisodios);
+		return Response.status(200).entity(response).build();		
 	}
 	
 	

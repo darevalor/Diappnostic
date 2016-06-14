@@ -56,17 +56,41 @@ public class ServicioGestor implements IServicioGestor {
 	 * @return episodio del paciente
 	 */
 	@Override
-	public List<Episodio> consultarEpisodios(long identificacion) {
+	public List<EpisodioDto> consultarEpisodios(long identificacion) {
 		List<Episodio> lista = new ArrayList<Episodio>();		
 		Query query = em.createNamedQuery("Episodio.episodiosUsuario");
 		
 		query.setParameter("docUsuario", identificacion);
-		query.setParameter("codRol", 1);
+		query.setParameter("codRol", 1);	
 		lista = query.getResultList();
-		
-		
-		
-		return lista;
+								
+		return mapper(lista);
+	}
+	
+	/**
+	 * Realiza el mapeo de la consulta al dto
+	 * @param episodios
+	 * @return
+	 */
+	private List<EpisodioDto> mapper(List<Episodio> episodios) {
+		List<EpisodioDto> epiDtoList = new ArrayList<EpisodioDto>();
+		for (Episodio episodio : episodios) {
+			EpisodioDto epiDto = new EpisodioDto(
+					episodio.getAlimentosConsumidos(), 
+					episodio.getDescripcionVoz(), 
+					episodio.getFecha().toString(), 
+					episodio.getNivelDolor().longValue(), 
+					episodio.getPresentaSomnolencia(), 
+					episodio.getAcividadFisica().getCodigo(), 
+					episodio.getLocalizacionDolor().getCodigo(), 
+					episodio.getMedicamento().getCodigo(), 
+					episodio.getRolUsuario().getId().getNumDocUsuario(),					
+					episodio.getRolUsuario().getId().getCodRol());
+			epiDtoList.add(epiDto);
+			
+		}
+		return epiDtoList;
+
 	}
 
 	
