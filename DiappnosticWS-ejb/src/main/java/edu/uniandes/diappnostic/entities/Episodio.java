@@ -12,7 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Episodio.episodiosUsuario", query="SELECT e FROM Episodio e WHERE e.rolUsuario.id.numDocUsuario = :docUsuario AND e.rolUsuario.id.codRol = :codRol")
+@NamedQuery(name="Episodio.findAll", query="SELECT e FROM Episodio e")
 public class Episodio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,9 +27,11 @@ public class Episodio implements Serializable {
 	@Column(name="DESCRIPCION_VOZ")
 	private String descripcionVoz;
 
-	//@Temporal(TemporalType.DATE)
-	@Temporal( TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
+
+	@Column(name="IP_SERVIDOR")
+	private String ipServidor;
 
 	@Column(name="NIVEL_DOLOR")
 	private BigDecimal nivelDolor;
@@ -97,6 +99,14 @@ public class Episodio implements Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getIpServidor() {
+		return this.ipServidor;
+	}
+
+	public void setIpServidor(String ipServidor) {
+		this.ipServidor = ipServidor;
 	}
 
 	public BigDecimal getNivelDolor() {

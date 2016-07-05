@@ -6,12 +6,12 @@ import java.util.List;
 
 
 /**
- * The persistent class for the ROL database table.
+ * The persistent class for the FUNCIONALIDAD database table.
  * 
  */
 @Entity
-@NamedQuery(name="Rol.findAll", query="SELECT r FROM Rol r")
-public class Rol implements Serializable {
+@NamedQuery(name="Funcionalidad.findAll", query="SELECT f FROM Funcionalidad f")
+public class Funcionalidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,15 +19,13 @@ public class Rol implements Serializable {
 
 	private String descripcion;
 
+	private String nombre;
+
 	//bi-directional many-to-one association to PermisoXRol
-	@OneToMany(mappedBy="rol")
+	@OneToMany(mappedBy="funcionalidad")
 	private List<PermisoXRol> permisoXRols;
 
-	//bi-directional many-to-one association to RolUsuario
-	@OneToMany(mappedBy="rol")
-	private List<RolUsuario> rolUsuarios;
-
-	public Rol() {
+	public Funcionalidad() {
 	}
 
 	public long getCodigo() {
@@ -46,6 +44,14 @@ public class Rol implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public List<PermisoXRol> getPermisoXRols() {
 		return this.permisoXRols;
 	}
@@ -56,38 +62,16 @@ public class Rol implements Serializable {
 
 	public PermisoXRol addPermisoXRol(PermisoXRol permisoXRol) {
 		getPermisoXRols().add(permisoXRol);
-		permisoXRol.setRol(this);
+		permisoXRol.setFuncionalidad(this);
 
 		return permisoXRol;
 	}
 
 	public PermisoXRol removePermisoXRol(PermisoXRol permisoXRol) {
 		getPermisoXRols().remove(permisoXRol);
-		permisoXRol.setRol(null);
+		permisoXRol.setFuncionalidad(null);
 
 		return permisoXRol;
-	}
-
-	public List<RolUsuario> getRolUsuarios() {
-		return this.rolUsuarios;
-	}
-
-	public void setRolUsuarios(List<RolUsuario> rolUsuarios) {
-		this.rolUsuarios = rolUsuarios;
-	}
-
-	public RolUsuario addRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().add(rolUsuario);
-		rolUsuario.setRol(this);
-
-		return rolUsuario;
-	}
-
-	public RolUsuario removeRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().remove(rolUsuario);
-		rolUsuario.setRol(null);
-
-		return rolUsuario;
 	}
 
 }

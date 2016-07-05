@@ -5,12 +5,14 @@
 	<persistence-unit name="DiappnosticWS-ejb">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/DiappnosticDS</jta-data-source>
-
 		<class>edu.uniandes.diappnostic.entities.AcividadFisica</class>
 		<class>edu.uniandes.diappnostic.entities.Diagnostico</class>
 		<class>edu.uniandes.diappnostic.entities.Episodio</class>
+		<class>edu.uniandes.diappnostic.entities.Funcionalidad</class>
 		<class>edu.uniandes.diappnostic.entities.LocalizacionDolor</class>
 		<class>edu.uniandes.diappnostic.entities.Medicamento</class>
+		<class>edu.uniandes.diappnostic.entities.PermisoXRol</class>
+		<class>edu.uniandes.diappnostic.entities.PermisoXRolPK</class>
 		<class>edu.uniandes.diappnostic.entities.Rol</class>
 		<class>edu.uniandes.diappnostic.entities.RolUsuario</class>
 		<class>edu.uniandes.diappnostic.entities.RolUsuarioPK</class>
