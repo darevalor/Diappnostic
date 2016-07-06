@@ -30,9 +30,9 @@ public class AlmacenarEpisodiosHilo implements Runnable {
 				try{
 					System.out.println("========= 2.1 Registrando episodio AlmacenarEpisodiosHilo =========");
 					episodioDAO.registrarEpisodio(episodioDto);
-				}catch(SQLRecoverableException e){
+				}catch(Exception e){
 					colaEpisodios.agregarEpisodio(episodioDto);
-					log.log(Level.WARNING, "Conexión perdida con la BD");
+					log.log(Level.WARNING, "Conexión perdida con la BD: "+e.getMessage());
 					try {
 						System.out.println("========= 2.2 Conexion perdida con la base de datos =========");
 						Thread.sleep(5000);

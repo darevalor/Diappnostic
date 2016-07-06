@@ -12,7 +12,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Episodio.findAll", query="SELECT e FROM Episodio e")
+@NamedQueries({
+	@NamedQuery(name="Episodio.findAll", query="SELECT e FROM Episodio e"),
+	@NamedQuery(name="Episodio.episodiosUsuario", query="SELECT e FROM Episodio e where e.rolUsuario.usuario.numDoc = :docUsuario and e.rolUsuario.rol.codigo = :codRol")
+})
 public class Episodio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -44,22 +47,22 @@ public class Episodio implements Serializable {
 	private List<Diagnostico> diagnosticos;
 
 	//bi-directional many-to-one association to AcividadFisica
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="COD_ACTIVIDAD")
 	private AcividadFisica acividadFisica;
 
 	//bi-directional many-to-one association to LocalizacionDolor
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="COD_LOCALIZACION")
 	private LocalizacionDolor localizacionDolor;
 
 	//bi-directional many-to-one association to Medicamento
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="COD_MEDICAMENTO")
 	private Medicamento medicamento;
 
 	//bi-directional many-to-one association to RolUsuario
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({
 		@JoinColumn(name="COD_ROL_USUARIO", referencedColumnName="COD_ROL"),
 		@JoinColumn(name="NUM_DOC_USUARIO", referencedColumnName="NUM_DOC_USUARIO")

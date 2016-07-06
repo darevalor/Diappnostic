@@ -1,6 +1,5 @@
 package edu.uniandes.diappnostic.persistencia;
 
-import java.sql.SQLRecoverableException;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -13,7 +12,7 @@ public interface IEpisodioDAO {
 	 * registra un episodio en el sistema
 	 * @param episodioDto informacion del episodio
 	 */
-	void registrarEpisodio(EpisodioDto episodioDto)throws SQLRecoverableException;
+	void registrarEpisodio(EpisodioDto episodioDto)throws Exception;
 	
 	/**
 	 * Revisar los episodios de dolor del paciente 

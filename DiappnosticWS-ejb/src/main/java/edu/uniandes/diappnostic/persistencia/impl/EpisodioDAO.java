@@ -26,7 +26,9 @@ public class EpisodioDAO implements edu.uniandes.diappnostic.persistencia.IEpiso
 	 * @param episodioDto informacion del episodio
 	 */
 	@Override
-	public void registrarEpisodio(EpisodioDto episodioDto)throws SQLRecoverableException {
+	public void registrarEpisodio(EpisodioDto episodioDto)throws Exception {
+		if(em == null || !em.isOpen())
+			throw new Exception("Conexion perdida con la bd");
 		System.out.print("OK: " + episodioDto.getNumDocUsuario());
 		
 		Query query = em.createNativeQuery("INSERT INTO EPISODIO VALUES (SEQ_EPISODIO.NEXTVAL, to_date(?1, 'dd/mm/yyyy'), ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)");
